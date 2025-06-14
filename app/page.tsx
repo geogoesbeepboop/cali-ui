@@ -46,11 +46,11 @@ export default function Home() {
     try {
       // Use React Query mutation for API call
       const result = await chatMutation.mutateAsync({ 
-        messages: [...chatHistory, userMessage] 
+        message: message 
       });
       
       // Add AI response to chat
-      addMessage({ role: 'system', content: result.response });
+      addMessage({ role: 'system', content: result });
     } catch (error) {
       console.error('Error:', error);
       addMessage({ 
@@ -68,7 +68,7 @@ export default function Home() {
     return (
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm">
-          <h1 className="text-4xl font-bold text-center mb-8">Cali - Financial AI Advisor</h1>
+          <h1 className="text-4xl font-bold text-center mb-8">Cali - Miss.Know-It-All</h1>
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
             <div className="h-96 overflow-y-auto mb-4 p-4 bg-gray-50 rounded"></div>
             <div className="flex gap-2">
@@ -84,7 +84,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm">
-        <h1 className="text-4xl font-bold text-center mb-8">Cali - Financial AI Advisor</h1>
+        <h1 className="text-4xl font-bold text-center mb-8">Cali - Miss.Know-It-All</h1>
         
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
           <div className="h-96 overflow-y-auto mb-4 p-4 bg-gray-50 rounded">
@@ -111,7 +111,7 @@ export default function Home() {
               type="text"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Ask about financial markets, economic trends, or stock analysis..."
+              placeholder="Ask about financial markets, economic trends, or whatever..."
               className="flex-grow p-2 border border-gray-300 rounded"
               disabled={isLoading}
             />

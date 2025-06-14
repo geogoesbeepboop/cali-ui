@@ -1,19 +1,18 @@
 import { useMutation, useQueryClient } from 'react-query';
 import axios from 'axios';
-import { ChatMessage } from '../store/chatStore';
-
-interface ChatResponse {
-  response: string;
-}
 
 export const useChatQuery = () => {
   // Access the QueryClient from the context provided by QueryProvider
   const queryClient = useQueryClient();
 
-  return useMutation<ChatResponse, Error, { messages: ChatMessage[] }>(
-    async ({ messages }) => {
+  return useMutation<string, Error, { message: string }>(
+    async ({ message }) => {
       // Use axios instead of fetch
-      const response = await axios.post('http://localhost:3001/chat', { messages });
+      const response = await axios.post('http://localhost:3001/chat', { prompt: message }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
       return response.data;
     },
     {

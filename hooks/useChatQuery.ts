@@ -8,7 +8,8 @@ export const useChatQuery = () => {
   return useMutation<string, Error, { message: string }>(
     async ({ message }) => {
       // Use axios instead of fetch
-      const response = await axios.post('http://localhost:3001/chat', { prompt: message }, {
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
+      const response = await axios.post(`${apiUrl}/chat`, { prompt: message }, {
         headers: {
           'Content-Type': 'application/json'
         }

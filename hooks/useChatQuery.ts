@@ -9,7 +9,7 @@ export const useChatQuery = () => {
     async ({ message }) => {
       // Use axios instead of fetch
       const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-      const response = await axios.post(`${apiUrl}/chat`, { prompt: message }, {
+      const response = await axios.post(`${apiUrl}/api/chat`, { prompt: message }, {
         headers: {
           'Content-Type': 'application/json'
         }

@@ -35,6 +35,7 @@ const nextConfig = {
   },
   // Enable CORS for development
   experimental: {
+    allowedDevOrigins: ['george-andrade.com', 'localhost:3001'], // Add other origins as needed
     serverActions: {
       allowedOrigins: ['*'], // Replace with your domain in production
     },
